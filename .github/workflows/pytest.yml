@@ -25,7 +25,7 @@ jobs:
 
     - name: Build and start services
       run: |
-        docker-compose up -d --build
+        docker compose up -d --build
     
     - name: Wait for services to be ready
       run: |
@@ -38,7 +38,7 @@ jobs:
         echo "MySQL is up!"
         # Give services a bit more time to register in Traefik
         sleep 10
-        docker-compose ps
+        docker compose ps
 
     - name: Run tests
       run: |
@@ -47,4 +47,4 @@ jobs:
     - name: Show logs on failure
       if: failure()
       run: |
-        docker-compose logs
+        docker compose logs

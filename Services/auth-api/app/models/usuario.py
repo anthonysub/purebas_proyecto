@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String
 from database.connection import Base
 
 class Usuario(Base):
-    __tablename__ = "Usuarios"
+    __tablename__ = "usuarios"
 
     ID_usuario = Column(Integer, primary_key=True, index=True, autoincrement=True)
     nombre_usuario = Column(String(50), nullable=False, unique=True)

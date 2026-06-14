@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, DECIMAL
 from database.connection import Base
 
 class Producto(Base):
-    __tablename__ = "Productos"
+    __tablename__ = "productos"
 
     ID_producto = Column(Integer, primary_key=True, index=True, autoincrement=True)
     nombre_producto = Column(String(100), nullable=False)

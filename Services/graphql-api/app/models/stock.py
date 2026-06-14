@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, ForeignKey
 from database.connection import Base
 
 class StockActual(Base):
-    __tablename__ = "Stock_Actual"
+    __tablename__ = "stock_actual"
 
     # Estructura física de las columnas en XAMPP
     ID_stock = Column(Integer, primary_key=True, index=True, autoincrement=True)

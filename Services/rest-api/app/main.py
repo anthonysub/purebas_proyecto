@@ -2,6 +2,11 @@ from fastapi import FastAPI
 from routers import producto_router
 from fastapi.middleware.cors import CORSMiddleware
 
+from database.connection import engine, Base
+from models.producto import Producto
+
+Base.metadata.create_all(bind=engine)
+
 app = FastAPI(
     title="API REST de Productos",
     root_path="/rest",             # <-- Cambiado a la ruta corta

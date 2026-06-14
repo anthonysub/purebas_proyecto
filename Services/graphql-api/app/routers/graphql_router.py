@@ -3,7 +3,7 @@ from strawberry.fastapi import GraphQLRouter
 import strawberry
 from typing import List
 from sqlalchemy import text
-from app.database.connection import get_db
+from database.connection import get_db
 
 # Tipos de datos para GraphQL 
 @strawberry.type

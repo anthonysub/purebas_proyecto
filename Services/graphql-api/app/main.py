@@ -1,15 +1,14 @@
 from fastapi import FastAPI
-from app.routers import graphql_router
+from routers import graphql_router
 from fastapi.middleware.cors import CORSMiddleware
+from database.connection import engine, Base
+from models.stock import StockActual
 
-from app.database.connection import engine, Base
-from app.models.stock import StockActual
-
+# Crear tablas al iniciar
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="API de GraphQL",
-    root_path="/graphql",  
     docs_url="/docs",          
     openapi_url="/openapi.json"
 )
@@ -22,7 +21,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(graphql_router.router, prefix="")
+# Montamos el router de GraphQL directamente en /graphql
+# Así Traefik (que envía /graphql) coincidirá exactamente.
+app.include_router(graphql_router.router, prefix="/graphql")
 
 @app.get("/", tags=["Raíz"])
 def leer_raiz():
